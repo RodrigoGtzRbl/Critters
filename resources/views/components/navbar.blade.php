@@ -7,17 +7,17 @@
         </button>
 
         <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
-            <div class="navbar-nav mx-auto">
-                <a class="nav-link active" aria-current="page" href="/Crittopedia">Use the crittopedia</a>
+            <div class="navbar-nav mx-auto kalam-light">
+                <a class="nav-link fs-5 mx-3" aria-current="page" href="/Crittopedia">Use the crittopedia</a>
 
                 @if (Route::has('login'))
                     @auth
-                        <a class="nav-link active" aria-current="page" href="{{ url('/profile') }}">Profile</a>
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ url('/profile') }}">Profile</a>
                     @else
-                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Log in</a>
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('login') }}">Log in</a>
 
                         @if (Route::has('register'))
-                            <a class="nav-link active" aria-current="page" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
                 @endif

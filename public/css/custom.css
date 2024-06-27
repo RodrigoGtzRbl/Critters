@@ -39,3 +39,7 @@
 .carousel-img {
     height: 325px;
 }
+
+.text-justified{
+    text-align: justify;
+}

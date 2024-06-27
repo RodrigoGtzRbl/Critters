@@ -1,9 +1,17 @@
 <x-app-layout>
 
-    <div class="row text-center w-100">
-        <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
-            <h1 class="fs-1">WELCOME TO THE CRITTOPEDIA</h1>
+    <div class="row text-center w-100 align-items-center">
+        <div class="col-sm-12 col-md-6 px-5">
+            <h1 class="fs-1 kalam-bold">WELCOME TO CRITTOPEDIA</h1>
+            <br>
+            <h3 class="text-justified kalam-regular">Crittopedia is a global platform for documenting and exploring unique creatures.
+                Whether you're a researcher or an enthusiast, you can contribute findings, share knowledge, and connect
+                with others. Register now to add to our growing critter database and help uncover nature's mysteries.
+                Join us in creating the ultimate critter encyclopedia!</h3>
+            <br>
         </div>
+
+
         <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
             <div class="pedia text-start">
                 <div id="carousel" class="carousel slide">
