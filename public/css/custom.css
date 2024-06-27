@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+.kalam-light {
+    font-family: "Kalam", cursive;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.kalam-regular {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.kalam-bold {
+    font-family: "Kalam", cursive;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+.nav-vh {
+    min-height: 8dvh;
+}
+
+.min-main-vh {
+    min-height: 92dvh;
+}
+
+.pedia {
+    background-image: url("/media/pedia.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 700px;
+    padding: 85px 45px 195px 45px;
+}
+
+.carousel-img {
+    height: 325px;
+}
