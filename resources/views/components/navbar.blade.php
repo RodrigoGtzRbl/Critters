@@ -8,7 +8,7 @@
 
         <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-                <a class="nav-link active" aria-current="page" href="#">Use the crittopedia</a>
+                <a class="nav-link active" aria-current="page" href="/Crittopedia">Use the crittopedia</a>
 
                 @if (Route::has('login'))
                     @auth
