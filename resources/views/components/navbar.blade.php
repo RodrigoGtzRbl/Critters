@@ -8,11 +8,11 @@
 
         <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Use the crittopedia</a>
 
                 @if (Route::has('login'))
                     @auth
-                        <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/profile') }}">Profile</a>
                     @else
                         <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Log in</a>
 

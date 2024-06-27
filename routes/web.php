@@ -8,13 +8,10 @@ Route::get('/', function () {
     return view('welcome2');
 });
 
-Route::get('/login2', function () {
-    return view('auth.login2');
-});
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/profile', function () {
+    return view('profile.edit');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
