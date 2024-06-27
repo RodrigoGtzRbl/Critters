@@ -9,9 +9,18 @@
         <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+
+                @if (Route::has('login'))
+                    @auth
+                        <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                    @else
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a class="nav-link active" aria-current="page" href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                @endif
             </div>
         </div>
     </div>

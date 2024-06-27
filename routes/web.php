@@ -5,7 +5,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('vista');
+    return view('welcome2');
+});
+
+Route::get('/login2', function () {
+    return view('auth.login2');
 });
 
 
