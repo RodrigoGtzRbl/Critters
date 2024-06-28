@@ -13,6 +13,8 @@
                 @if (Route::has('login'))
                     @auth
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ url('/profile') }}">Profile</a>
+
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.register') }}">Register a critter</a>
                     @else
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('login') }}">Log in</a>
 

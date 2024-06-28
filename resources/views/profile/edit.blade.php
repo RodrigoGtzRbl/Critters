@@ -1,8 +1,5 @@
 <x-app-layout>
     <div class="container">
-        @php
-            $user = auth()->user();
-        @endphp
 
         <x-slot name="header">
             <h2 class="fw-semibold fs-4 text-dark">
