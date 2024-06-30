@@ -80,7 +80,7 @@ class CrittersController extends Controller
         $critter->save();
 
         //Redirect to show method the new Critter
-        return redirect()->route('critters.show', ['id' => $critter->id]);
+        return redirect()->route('critters.showById', ['id' => $critter->id]);
     }
 
     /**
@@ -89,22 +89,22 @@ class CrittersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showById($id)
     {
         $critters = Critter::where('id', $id)->get();
 
-        return view('crittopedia', compact('critters'));
+        return view('critters.showById', compact('critters'));
     }
 
     /**
      * Display all the critters.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function showAll()
     {
         $critters = Critter::get();
+        
 
         return view('crittopedia', compact('critters'));
     }
