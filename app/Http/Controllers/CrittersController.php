@@ -35,37 +35,49 @@ class CrittersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'species' => 'required|string|max:255',
-        'type_1' => 'required|string|max:255',
-        'type_2' => 'nullable|string|max:255',
-        'type_3' => 'nullable|string|max:255',
-        'description' => 'required|string',
-        'habitat' => 'required|string|max:255',
-        'encounter_difficulty' => 'required|in:common,rare,ultra rare,legendary',
-        'sound' => 'required|string|max:255',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'species' => 'required|string|max:255',
+            'type_1' => 'required|string|max:255',
+            'type_2' => 'nullable|string|max:255',
+            'type_3' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'habitat' => 'required|string|max:255',
+            'encounter_difficulty' => 'required|in:common,rare,ultra rare,legendary',
+            'image' => 'required|file|mimes:png|max:1024', //10MB
+            'sound' => 'required|file|mimes:mp3|max:4028', //2MB
+        ]);
 
-    $critter = new Critter();
-    $critter->name = $request->input('name');
-    $critter->species = $request->input('species');
-    $critter->type_1 = $request->input('type_1');
-    $critter->type_2 = $request->input('type_2');
-    $critter->type_3 = $request->input('type_3');
-    $critter->description = $request->input('description');
-    $critter->habitat = $request->input('habitat');
-    $critter->encounter_difficulty = $request->input('encounter_difficulty');
-    $critter->sound = $request->input('sound');
-    
-    // Asignar el user_id del usuario autenticado (si estás usando autenticación)
-    $critter->user_id = auth()->id(); // Esto asume que tienes autenticación configurada
-    
-    $critter->save();
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image'); //get the sound
+            $imageFileName = $imageFile->getClientOriginalName(); //Get files' name
+        }
 
-    return redirect()->route('critters.index');
-}
+        if ($request->hasFile('sound')) {
+            $soundFile = $request->file('sound'); //get the sound
+            $soundFileName = $soundFile->getClientOriginalName(); //Get files' name
+        }
+
+        $critter = new Critter();
+
+        $critter->name = $request->input('name');
+        $critter->species = $request->input('species');
+        $critter->type_1 = $request->input('type_1');
+        $critter->type_2 = $request->input('type_2');
+        $critter->type_3 = $request->input('type_3');
+        $critter->description = $request->input('description');
+        $critter->region = $request->input('habitat');
+        $critter->encounter_difficulty = $request->input('encounter_difficulty');
+        $critter->image = $imageFileName ?? null; 
+        $critter->sound = $soundFileName ?? null; 
+        $critter->user_id = auth()->id();
+
+        $critter->save();
+
+        //Redirect to show method the new Critter
+        return redirect()->route('critters.show', ['id' => $critter->id]);
+    }
 
     /**
      * Display the specified critter.
@@ -76,7 +88,8 @@ class CrittersController extends Controller
     public function show($id)
     {
         $critter = Critter::findOrFail($id);
-        return view('critters.show', compact('critter'));
+
+        return view('crittopedia', compact('critter'));
     }
 
     /**

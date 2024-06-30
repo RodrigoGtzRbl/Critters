@@ -18,7 +18,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('critters', CrittersController::class);
-Route::get('/critters/register', [CrittersController::class, 'create'])->name('critters.register');
+
+Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['auth']], function() {
+    Route::get('/register', [CrittersController::class, 'create'])->name('register');
+    Route::post('/', [CrittersController::class, 'store'])->name('store');
+    Route::get('/', [CrittersController::class, 'index'])->name('index');
+    Route::get('/{id}', [CrittersController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [CrittersController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CrittersController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CrittersController::class, 'destroy'])->name('destroy');
+});
 
 require __DIR__.'/auth.php';
