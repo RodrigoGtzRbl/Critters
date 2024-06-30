@@ -30,7 +30,7 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
 });
 
 Route::get(
-    '/show/all',
+    '/show/all/{start?}',
     [CrittersController::class, 'showAll']
 )->name('critters.all');
 

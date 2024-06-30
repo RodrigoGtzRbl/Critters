@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\functions;
 use Illuminate\Http\Request;
 use App\Models\Critter;
 
@@ -101,12 +102,16 @@ class CrittersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showAll()
+    public function showAll($start = 0)
     {
-        $critters = Critter::get();
+        $critters = Critter::skip($start)->take(30)->get();
+        $totalNumber = Critter::count();
+
+        $helper = new functions();
+        $pagination = $helper->makePagination($start, 'show/all', $totalNumber);
         
 
-        return view('crittopedia', compact('critters'));
+        return view('crittopedia', compact('critters', 'pagination'));
     }
 
     /**
