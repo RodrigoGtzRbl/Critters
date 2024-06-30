@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\functions;
 use Illuminate\Http\Request;
 use App\Models\Critter;
+use App\Models\User;
 
 class CrittersController extends Controller
 {
@@ -93,8 +94,9 @@ class CrittersController extends Controller
     public function showById($id)
     {
         $critters = Critter::where('id', $id)->get();
+        $investigatorName = User::where('id', $critters[0]->user_id)->value('name');
 
-        return view('critters.showById', compact('critters'));
+        return view('critters.showById', compact('critters', 'investigatorName'));
     }
 
     /**
