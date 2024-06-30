@@ -2,7 +2,7 @@
 
     <div class="container pt-5">
 
-        <div class="row">
+        <div class="row g-5">
             @foreach ($critters as $critter)
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <div class="card">
