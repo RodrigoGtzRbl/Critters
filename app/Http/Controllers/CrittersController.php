@@ -109,9 +109,26 @@ class CrittersController extends Controller
 
         $helper = new functions();
         $pagination = $helper->makePagination($start, 'show/all', $totalNumber);
-        
 
-        return view('crittopedia', compact('critters', 'pagination'));
+
+        return view('critters.crittopedia', compact('critters', 'pagination'));
+    }
+
+    /**
+     * Display all the critters.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myRegisters($start = 0)
+    {
+        $critters = Critter::skip($start)->take(30)->get();
+        $totalNumber = Critter::count();
+
+        $helper = new functions();
+        $pagination = $helper->makePagination($start, 'show/all', $totalNumber);
+
+
+        return view('critters.myRegisters', compact('critters', 'pagination'));
     }
 
     /**
@@ -122,8 +139,9 @@ class CrittersController extends Controller
      */
     public function edit($id)
     {
-        $critter = Critter::findOrFail($id);
-        return view('critters.edit', compact('critter'));
+        $critters = Critter::where('id', $id)->get();
+
+        return view('critters.edit', compact('critters'));
     }
 
     /**
@@ -136,19 +154,64 @@ class CrittersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'species' => 'required|string|max:255',
-            'age' => 'required|integer',
+            'name' => 'nullable|string|max:255',
+            'species' => 'nullable|string|max:255',
+            'type_1' => 'nullable|string|max:255',
+            'type_2' => 'nullable|string|max:255',
+            'type_3' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'habitat' => 'nullable|string|max:255',
+            'encounter_difficulty' => 'nullable|in:common,rare,ultra rare,legendary',
+            'image' => 'nullable|file|mimes:png|max:1024', // 1MB
+            'sound' => 'nullable|file|mimes:mp3|max:2048', // 2MB
         ]);
 
         $critter = Critter::findOrFail($id);
-        $critter->name = $request->input('name');
-        $critter->species = $request->input('species');
-        $critter->age = $request->input('age');
+
+        if ($request->has('name')) {
+            $critter->name = $request->input('name');
+        }
+        if ($request->has('species')) {
+            $critter->species = $request->input('species');
+        }
+        if ($request->has('type_1')) {
+            $critter->type_1 = $request->input('type_1');
+        }
+        if ($request->has('type_2')) {
+            $critter->type_2 = $request->input('type_2');
+        }
+        if ($request->has('type_3')) {
+            $critter->type_3 = $request->input('type_3');
+        }
+        if ($request->has('description')) {
+            $critter->description = $request->input('description');
+        }
+        if ($request->has('habitat')) {
+            $critter->region = $request->input('habitat');
+        }
+        if ($request->has('encounter_difficulty')) {
+            $critter->encounter_difficulty = $request->input('encounter_difficulty');
+        }
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $imageFileName = $imageFile->getClientOriginalName();
+            $imageFile->move(public_path('media/images'), $imageFileName);
+            $critter->image = $imageFileName;
+        }
+
+        if ($request->hasFile('sound')) {
+            $soundFile = $request->file('sound');
+            $soundFileName = $soundFile->getClientOriginalName();
+            $soundFile->move(public_path('media/sounds'), $soundFileName);
+            $critter->sound = $soundFileName;
+        }
+
         $critter->save();
 
-        return redirect()->route('critters.show', ['id' => $critter->id]);
+        return redirect()->route('critters.showById', ['id' => $critter->id]);
     }
+
 
     /**
      * Remove the specified critter from storage.

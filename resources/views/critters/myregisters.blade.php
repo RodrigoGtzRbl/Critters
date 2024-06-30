@@ -6,7 +6,7 @@
             @foreach ($critters as $critter)
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <div class="card">
-                        <a href="{{ route('critters.showById', ['id' => $critter->id]) }}"
+                        <a href="{{ route('critters.edit', ['id' => $critter->id]) }}"
                             class="text-black link-underline link-underline-opacity-0">
                             <img src="/media/images/{{ $critter->image }}" class="card-img-top crittopediaThumbnail p-2"
                                 alt="{{ $critter->name }} photo">

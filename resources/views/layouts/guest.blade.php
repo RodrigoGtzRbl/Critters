@@ -8,7 +8,7 @@
     @include('components.navbar')
 
     <main class="container-fluid min-main-vh d-flex align-items-center justify-content-center pt-5"
-        style="background-image: url('/media/welcomebg.png'); background-repeat: no-repeat; background-size: cover">
+        style="background-image: url('/media/bg/appBg.png'); background-repeat: no-repeat; background-size: cover">
 
         {{ $slot }}
 

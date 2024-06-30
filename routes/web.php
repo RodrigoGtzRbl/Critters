@@ -23,6 +23,7 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
     Route::get('/register', [CrittersController::class, 'create'])->name('register');
     Route::post('/', [CrittersController::class, 'store'])->name('store');
     Route::get('/', [CrittersController::class, 'index'])->name('index');
+    Route::get('/myRegisters', [CrittersController::class, 'myRegisters'])->name('myRegisters');
     Route::get('/{id}', [CrittersController::class, 'showById'])->name('showById');
     Route::get('/{id}/edit', [CrittersController::class, 'edit'])->name('edit');
     Route::put('/{id}', [CrittersController::class, 'update'])->name('update');

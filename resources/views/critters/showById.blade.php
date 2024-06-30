@@ -4,9 +4,6 @@
     
             <div id="CrittopediaCarousel" class="carousel slide">
                 <div class="carousel-inner">
-                    @php
-                        $showBtns = false;
-                    @endphp
                     @foreach ($critters as $index => $critter)
                         <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                             <audio id="{{ $critter->name }}Sound" hidden>
@@ -15,7 +12,7 @@
     
                             <div class="card">
                                 <img src="/media/images/{{ $critter->image }}" class="card-img-top crittopediaPhoto p-2"
-                                    alt="{{ $critter->name }} photo">
+                                alt="{{ $critter->image == null ? 'No image' : $critter->name . ' photo' }}">
     
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>Name:</strong> {{ $critter->name }}</h5>
@@ -36,28 +33,8 @@
                                 </ul>
                             </div>
                         </div>
-                        @if ($index > 0)
-                            {{ $showBtns = true }}
-                        @endif
                     @endforeach
                 </div>
-                @if ($showBtns)
-                    <div class="buttons text-center pt-4 row">
-                        <div class="col-6 text-end pe-4">
-                            <a href="">
-                                <i class="bi bi-arrow-left fs-1 text-black" data-bs-target="#CrittopediaCarousel"
-                                    data-bs-slide="prev"></i>
-                            </a>
-                        </div>
-    
-                        <div class="col-6 text-start ps-4">
-                            <a href="">
-                                <i class="bi bi-arrow-right fs-1 text-black" data-bs-target="#CrittopediaCarousel"
-                                    data-bs-slide="next"></i>
-                            </a>
-                        </div>
-                    </div>
-                @endif
             </div>
     
         </div>
