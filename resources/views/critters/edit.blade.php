@@ -9,7 +9,7 @@
             <form action="{{ route('critters.update', $critter->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="row">
+                <div class="row g-5">
 
                     <input type="hidden" name="id" value="{{ $critter->id }}">
 

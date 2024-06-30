@@ -98,7 +98,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="image">Foto (PNG, max 10MB):</label>
+                    <label for="image">Foto (PNG, max 10MB, 329x244px):</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="file" id="image" name="image" accept=".png" required>
