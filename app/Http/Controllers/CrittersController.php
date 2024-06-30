@@ -52,11 +52,15 @@ class CrittersController extends Controller
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image'); //get the sound
             $imageFileName = $imageFile->getClientOriginalName(); //Get files' name
+
+            $imageFile->move(public_path('media/images'), $imageFileName); //save the image
         }
 
         if ($request->hasFile('sound')) {
             $soundFile = $request->file('sound'); //get the sound
             $soundFileName = $soundFile->getClientOriginalName(); //Get files' name
+
+            $soundFile->move(public_path('media/sounds'), $soundFileName); //save the sound
         }
 
         $critter = new Critter();
@@ -69,8 +73,8 @@ class CrittersController extends Controller
         $critter->description = $request->input('description');
         $critter->region = $request->input('habitat');
         $critter->encounter_difficulty = $request->input('encounter_difficulty');
-        $critter->image = $imageFileName ?? null; 
-        $critter->sound = $soundFileName ?? null; 
+        $critter->image = $imageFileName ?? null;
+        $critter->sound = $soundFileName ?? null;
         $critter->user_id = auth()->id();
 
         $critter->save();
@@ -87,9 +91,22 @@ class CrittersController extends Controller
      */
     public function show($id)
     {
-        $critter = Critter::findOrFail($id);
+        $critters = Critter::where('id', $id)->get();
 
-        return view('crittopedia', compact('critter'));
+        return view('crittopedia', compact('critters'));
+    }
+
+    /**
+     * Display all the critters.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showAll()
+    {
+        $critters = Critter::get();
+
+        return view('crittopedia', compact('critters'));
     }
 
     /**
