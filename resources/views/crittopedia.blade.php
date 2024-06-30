@@ -12,9 +12,11 @@
                         <audio id="{{ $critter->name }}Sound" hidden>
                             <source src="/media/sounds/{{ $critter->sound }}" type="audio/mpeg">
                         </audio>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/media/images/{{ $critter->image }}" class="card-img-top crittopediaPhoto"
+
+                        <div class="card">
+                            <img src="/media/images/{{ $critter->image }}" class="card-img-top crittopediaPhoto p-2"
                                 alt="{{ $critter->name }} photo">
+
                             <div class="card-body">
                                 <h5 class="card-title"><strong>Name:</strong> {{ $critter->name }}</h5>
                                 <p class="card-text"><strong>Desc:</strong> {{ $critter->description }}</p>

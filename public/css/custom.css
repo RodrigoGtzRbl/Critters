@@ -28,7 +28,7 @@
 }
 
 .pedia {
-    background-image: url("/media/pedia.png");
+    background-image: url("/media/others/pedia.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 400px;
@@ -45,5 +45,6 @@
 }
 
 .crittopediaPhoto{
-    height: 160px;
+    height: 260px;
+    width: 345px;
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary nav-vh">
     <div class="container-fluid">
-        <a class="ms-4" href="/"><img src="/media/logo-light.png" alt="" class="img-fluid"></a>
+        <a class="ms-4" href="/"><img src="/media/logo/logo-light.png" alt="" class="img-fluid"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
