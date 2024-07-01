@@ -17,6 +17,7 @@
                             <h5 class="fs-5"><strong>Registered by:</strong> {{ $investigatorName }}</h5>
                             <h5 class="fs-5"><strong>Name:</strong> {{ $critter->name }}</h5>
                             <p class="card-text"><strong>Description:</strong> {{ $critter->description }}</p>
+                            <p class="card-text"><strong>Habitat:</strong> {{ $critter->region }}</p>
                             <button id="{{ $critter->name }}SoundBtn"
                                 class="btn btn-primary soundBtn"><strong>Sound</strong></button>
                         </div>

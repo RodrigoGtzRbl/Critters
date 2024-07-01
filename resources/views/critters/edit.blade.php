@@ -26,7 +26,7 @@
                                 </h5>
                                 <p class="card-text">
                                     <strong>Description:</strong>
-                                    <textarea name="description" class="form-control">{{ $critter->description }}</textarea>
+                                    <textarea name="description" class="form-control" required>{{ $critter->description }}</textarea>
                                 </p>
                             </div>
                         </div>
