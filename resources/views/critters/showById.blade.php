@@ -4,14 +4,14 @@
     <div class="container ">
         <div class="row text-start mb-4">
             <div>
-                <a href="{{ route('critters.all') }}"
-                class="fs-1 text-white"><i class="bi bi-arrow-left-circle-fill "></i></a>
+                <a href="{{ route('critters.all') }}" class="fs-1 text-white"><i
+                        class="bi bi-arrow-left-circle-fill "></i></a>
             </div>
-            
+
         </div>
         <div class="row">
             @foreach ($critters as $index => $critter)
-                <audio id="{{ $critter->name }}Sound" hidden>
+                <audio hidden>
                     <source src="/media/sounds/{{ $critter->sound }}" type="audio/mpeg">
                 </audio>
 
@@ -25,14 +25,15 @@
                             <h5 class="fs-5"><strong>Registered by:</strong> {{ $investigatorName }}</h5>
                             <h5 class="fs-5"><strong>Name:</strong> {{ $critter->name }}</h5>
 
-                            @if ($investigatorID == $critter->user_id)
-                                <div class="card-footer text-center">
-                                    <button id="{{ $critter->name }}SoundBtn"
-                                        class="btn btn-primary soundBtn"><strong>Sound</strong></button>
+
+                            <div class="card-footer text-center">
+                                <button class="btn btn-primary soundBtn"><strong>Sound</strong></button>
+                                @if ($investigatorID == $critter->user_id)
                                     <a href="{{ route('critters.edit', ['id' => $critter->id]) }}"
                                         class="btn btn-success">Edit Critter</a>
-                                </div>
-                            @endif
+                                @endif
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -42,7 +43,9 @@
                         <div class="card-body">
                             <p class="card-text"><strong>Description:</strong> {{ $critter->description }}</p>
 
-                            <p class="card-text"><strong>Types:</strong> {{ $critter->type_1 }}{{$critter->type_2 ? ', '.$critter->type_2 : ''}}{{$critter->type_3 ? ','.$critter->type_3 : ''}}</p>
+                            <p class="card-text"><strong>Types:</strong>
+                                {{ $critter->type_1 }}{{ $critter->type_2 ? ', ' . $critter->type_2 : '' }}{{ $critter->type_3 ? ',' . $critter->type_3 : '' }}
+                            </p>
 
                             <p class="card-text"><strong>Habitat:</strong> {{ $critter->region }}</p>
                             <p class="card-text"><strong>Encounter Difficulty:</strong>
