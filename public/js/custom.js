@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.soundBtn').click( function() {
+    $('.soundBtn').click(function () {
         let btnID = $(this).attr('id');
         let critterName = btnID.split('SoundBtn')[0];
         let audioName = '#' + critterName + 'Sound';
@@ -10,7 +10,7 @@ $(document).ready(function () {
         if (audioElement) {
             audioElement.play()
         }
-        
+
     });
 
 });

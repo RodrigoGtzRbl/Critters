@@ -161,7 +161,7 @@ class CrittersController extends Controller
             'type_1' => 'nullable|string|max:255',
             'type_2' => 'nullable|string|max:255',
             'type_3' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'habitat' => 'nullable|string|max:255',
             'encounter_difficulty' => 'nullable|in:common,rare,ultra rare,legendary',
             'image' => 'nullable|file|mimes:png|max:5120', // 5MB

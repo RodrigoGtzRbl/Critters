@@ -1,6 +1,8 @@
 <x-app-layout>
 
+
     <div class="container d-flex justify-content-center">
+
 
         @foreach ($critters as $index => $critter)
             <audio id="{{ $critter->name }}Sound" hidden>
@@ -26,7 +28,11 @@
                                 </h5>
                                 <p class="card-text">
                                     <strong>Description:</strong>
-                                    <textarea name="description" class="form-control" required>{{ $critter->description }}</textarea>
+                                    <textarea name="description" class="form-control">{{ $critter->description }}</textarea>
+                                    
+                                    @foreach ($errors->get('description') as $error)
+                                        <span class="text-danger">{{ $error }}</span><br>
+                                    @endforeach
                                 </p>
                             </div>
                         </div>
