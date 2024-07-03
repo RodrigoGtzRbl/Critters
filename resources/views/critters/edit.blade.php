@@ -29,7 +29,7 @@
                                 <p class="card-text">
                                     <strong>Description:</strong>
                                     <textarea name="description" class="form-control">{{ $critter->description }}</textarea>
-                                    
+
                                     @foreach ($errors->get('description') as $error)
                                         <span class="text-danger">{{ $error }}</span><br>
                                     @endforeach
@@ -84,6 +84,7 @@
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-success">Update Critter</button>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

@@ -30,6 +30,12 @@
                                 <li class="list-group-item"><strong>Third type:</strong> {{ $critter->type_3 }}</li>
                             @endif
                         </ul>
+                        @if ($investigatorID == $critter->user_id)
+                            <div class="card-footer">
+                                <a href="{{ route('critters.edit', ['id' => $critter->id]) }}"
+                                    class="btn btn-success">Edit Critter</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endforeach

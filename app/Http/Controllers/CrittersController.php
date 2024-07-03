@@ -95,8 +95,9 @@ class CrittersController extends Controller
     {
         $critters = Critter::where('id', $id)->get();
         $investigatorName = User::where('id', $critters[0]->user_id)->value('name');
+        $investigatorID = User::where('id', $critters[0]->user_id)->value('id');
 
-        return view('critters.showById', compact('critters', 'investigatorName'));
+        return view('critters.showById', compact('critters', 'investigatorName', 'investigatorID'));
     }
 
     /**
