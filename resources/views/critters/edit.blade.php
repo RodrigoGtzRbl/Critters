@@ -63,7 +63,7 @@
                                 <input type="text" name="habitat" class="form-control"
                                     value="{{ $critter->region }}">
                                 <strong>Encounter Difficulty:</strong>
-                                <select name="encounter_difficulty" class="form-control">
+                                <select name="encounter_difficulty" class="form-select">
                                     <option value="common"
                                         {{ $critter->encounter_difficulty == 'common' ? 'selected' : '' }}>Common
                                     </option>

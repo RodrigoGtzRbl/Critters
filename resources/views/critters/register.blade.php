@@ -2,7 +2,7 @@
     <div class="container">
 
         <div class="row text-center mb-5">
-            <h1>Crear Nuevo Critter</h1>
+            <h1>Register a Critter</h1>
         </div>
 
         @if ($errors->any())
@@ -19,7 +19,7 @@
             @csrf
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="name">Nombre:</label>
+                    <label for="name">Name:</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="name" name="name" value="{{ old('name') }}"
@@ -28,16 +28,15 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="species">Especie:</label>
+                    <label for="description">Description:</label>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="text" id="species" name="species"
-                        value="{{ old('species') }}" required>
+                    <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="type_1">Tipo 1:</label>
+                    <label for="type_1">Type 1:</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="type_1" name="type_1" value="{{ old('type_1') }}"
@@ -46,7 +45,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="type_2">Tipo 2 (opcional):</label>
+                    <label for="type_2">Type 2 (optional):</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="type_2" name="type_2"
@@ -55,7 +54,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="type_3">Tipo 3 (opcional):</label>
+                    <label for="type_3">Type 3 (optional):</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="type_3" name="type_3"
@@ -64,15 +63,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="description">Descripción:</label>
-                </div>
-                <div class="col-6">
-                    <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-4 text-end">
-                    <label for="habitat">Hábitat:</label>
+                    <label for="habitat">Habitat:</label>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="habitat" name="habitat"
@@ -81,40 +72,40 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="encounter_difficulty">Dificultad de Encuentro:</label>
+                    <label for="encounter_difficulty">Difficulty of encounter:</label>
                 </div>
                 <div class="col-6">
                     <select class="form-select" id="encounter_difficulty" name="encounter_difficulty" required>
-                        <option value="common" {{ old('encounter_difficulty') == 'common' ? 'selected' : '' }}>Común
+                        <option value="common" {{ old('encounter_difficulty') == 'common' ? 'selected' : '' }}>Common
                         </option>
-                        <option value="rare" {{ old('encounter_difficulty') == 'rare' ? 'selected' : '' }}>Raro
+                        <option value="rare" {{ old('encounter_difficulty') == 'rare' ? 'selected' : '' }}>Rare
                         </option>
                         <option value="ultra rare" {{ old('encounter_difficulty') == 'ultra rare' ? 'selected' : '' }}>
-                            Ultra Raro</option>
+                            Ultra rare</option>
                         <option value="legendary" {{ old('encounter_difficulty') == 'legendary' ? 'selected' : '' }}>
-                            Legendario</option>
+                            Legendary</option>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="image">Foto (PNG, max 5MB, 329x244px):</label>
+                    <label for="image">Picture (PNG, max 5MB, 1024x1024px):</label>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="file" id="image" name="image" accept=".png" required>
+                    <input class="form-control" type="file" id="image" name="image" accept=".png" required >
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="sound">Sonido (MP3, max 2MB):</label>
+                    <label for="sound">Sound (MP3, max 2MB):</label>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="file" id="sound" name="sound" accept=".mp3" required>
+                    <input class="form-control" type="file" id="sound" name="sound" accept=".mp3" required >
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit">Crear Critter</button>
+                    <button class="btn btn-primary" type="submit">Create Critter</button>
                 </div>
             </div>
         </form>

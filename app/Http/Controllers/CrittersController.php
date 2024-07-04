@@ -122,6 +122,25 @@ class CrittersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function search(Request $request)
+    {
+
+        $id = $request->query('id');
+        if ($id == null) {
+            $critters = Critter::orderBy('id')->get();
+        } else {
+            $critters = Critter::where('id', $id)->get();
+        }
+
+
+        return view('critters.crittopedia', compact('critters'));
+    }
+
+    /**
+     * Display all the critters.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function myRegisters($start = 0)
     {
         $critters = Critter::skip($start)->take(30)->get();

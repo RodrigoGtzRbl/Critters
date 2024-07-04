@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['auth']], function () {
     Route::get('/register', [CrittersController::class, 'create'])->name('register');
     Route::post('/', [CrittersController::class, 'store'])->name('store');
     Route::get('/', [CrittersController::class, 'index'])->name('index');
@@ -29,9 +29,8 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
     Route::delete('/{id}', [CrittersController::class, 'destroy'])->name('destroy');
 });
 
-Route::get(
-    '/show/all/{start?}',
-    [CrittersController::class, 'showAll']
-)->name('critters.all');
+Route::get('/show/all/{start?}',  [CrittersController::class, 'showAll'])->name('critters.all');
 
-require __DIR__.'/auth.php';
+Route::get('/search', [CrittersController::class, 'search'])->name('critters.search');
+
+require __DIR__ . '/auth.php';

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="row text-center w-100 align-items-center">
+    <div class="row text-center w-100 align-items-center g-5">
         <div class="col-sm-12 col-md-6 px-5">
             <h1 class="fs-1 kalam-bold">WELCOME TO CRITTOPEDIA</h1>
             <br>
