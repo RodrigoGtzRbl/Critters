@@ -6,6 +6,7 @@ use App\Helpers\functions;
 use Illuminate\Http\Request;
 use App\Models\Critter;
 use App\Models\User;
+use Illuminate\Support\Arr;
 
 class CrittersController extends Controller
 {
@@ -131,9 +132,14 @@ class CrittersController extends Controller
     {
 
         $id = $request->query('id');
+
         if ($id == null) {
             $critters = Critter::orderBy('id')->get();
         } else {
+            $exists = Critter::where('id', $id)->exists();
+            if (!$exists) {
+                return redirect()->route('critters.all');
+            }
             $critters = Critter::where('id', $id)->get();
         }
 
