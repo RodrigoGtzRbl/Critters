@@ -93,11 +93,16 @@ class CrittersController extends Controller
      */
     public function showById($id)
     {
-        $critters = Critter::where('id', $id)->get();
-        $investigatorName = User::where('id', $critters[0]->user_id)->value('name');
-        $investigatorID = User::where('id', $critters[0]->user_id)->value('id');
+        $critter = Critter::where('id', $id)->first();
 
-        return view('critters.showById', compact('critters', 'investigatorName', 'investigatorID'));
+        if (!$critter) {
+            return redirect()->route('critters.all');
+        }
+
+        $investigatorName = User::where('id', $critter->user_id)->value('name');
+        $investigatorID = User::where('id', $critter->user_id)->value('id');
+
+        return view('critters.showById', compact('critter', 'investigatorName', 'investigatorID'));
     }
 
     /**
