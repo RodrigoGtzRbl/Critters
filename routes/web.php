@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrittersController;
 use App\Http\Controllers\WelcomeController;
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return redirect()->route('profile.edit');
@@ -32,5 +32,9 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
 Route::get('/show/all/{start?}',  [CrittersController::class, 'showAll'])->name('critters.all');
 
 Route::get('/search', [CrittersController::class, 'search'])->name('critters.search');
+
+Route::fallback(function () {
+    return redirect()->route('welcome');
+});
 
 require __DIR__ . '/auth.php';
