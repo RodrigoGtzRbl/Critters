@@ -273,6 +273,6 @@ class CrittersController extends Controller
         $critter = Critter::findOrFail($id);
         $critter->delete();
 
-        return redirect()->route('critters.index');
+        return redirect()->route('critters.myRegisters');
     }
 }

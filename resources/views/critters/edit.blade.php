@@ -1,7 +1,7 @@
 <x-app-layout>
 
 
-    <div class="container">
+    <div class="container kalam-regular">
 
         <div class="row text-start mb-4">
             <div>
@@ -96,6 +96,14 @@
 
             </div>
         </form>
+        <div class="row text-center mt-5">
+            <form action="{{ route('critters.destroy', ['id' => $critter->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este critter?');">
+                @csrf
+                @method('DELETE')
+            
+                <button type="submit" class="btn btn-danger">Eliminar Critter</button>
+            </form>
+        </div>
 
     </div>
 </x-app-layout>
