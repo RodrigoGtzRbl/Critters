@@ -29,7 +29,7 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
     Route::delete('/{id}', [CrittersController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/show/all/{start?}',  [CrittersController::class, 'showAll'])->name('critters.all');
+Route::get('/show/all/{start?}', [CrittersController::class, 'showAll'])->name('critters.all');
 
 Route::get('/search', [CrittersController::class, 'search'])->name('critters.search');
 

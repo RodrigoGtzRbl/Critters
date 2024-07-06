@@ -5,21 +5,23 @@
         <div class="row g-5">
             <div class="col-12">
                 <form action="{{ route('critters.search') }}" method="GET" class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" name="id" placeholder="Search by id"
+                    <input class="form-control me-2 kalam-regular" type="search" name="nameId" placeholder="Search by name or id"
                         aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-success kalam-regular" type="submit">Search</button>
                 </form>
-                @php
-                    if ($critters) {
-                        // dd($critters);
-                    }
-
-                @endphp
 
             </div>
+            @if (isset($found) && Str::length($found) > 1)
+                <div class="col-12 text-center">
+                    <h4 class="fs-4 text-danger kalam-regular">
+                        {{ $found }}
+                    </h4>
+                </div>
+            @endif
+
             @foreach ($critters as $critter)
                 <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                    <div class="card cardSmall pulseAnimation">
+                    <div class="card cardSmall pulseAnimation kalam-regular">
                         <a href="{{ route('critters.showById', ['id' => $critter->id]) }}"
                             class="text-black link-underline link-underline-opacity-0">
                             <img src="/media/images/{{ $critter->image }}" class="card-img-top crittopediaThumbnail p-2"
@@ -37,7 +39,7 @@
 
         {{-- PAGINATION --}}
         @if (isset($pagination))
-            <div class="row mt-5 pt-5">
+            <div class="row mt-5 py-5 kalam-regular">
                 {!! $pagination !!}
             </div>
         @endif

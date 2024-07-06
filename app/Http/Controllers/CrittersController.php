@@ -111,7 +111,7 @@ class CrittersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showAll($start = 0)
+    public function showAll($start = 0, $found = '')
     {
         $critters = Critter::skip($start)->take(30)->get();
         $totalNumber = Critter::count();
@@ -119,8 +119,7 @@ class CrittersController extends Controller
         $helper = new functions();
         $pagination = $helper->makePagination($start, 'show/all', $totalNumber);
 
-
-        return view('critters.crittopedia', compact('critters', 'pagination'));
+        return view('critters.crittopedia', compact('critters', 'pagination', 'found'));
     }
 
     /**
@@ -131,20 +130,37 @@ class CrittersController extends Controller
     public function search(Request $request)
     {
 
-        $id = $request->query('id');
+        $nameId = $request->query('nameId');
+        $found = '';
 
-        if ($id == null) {
+        if ($nameId == null) {
+            $found = 'Nothing to search';
             $critters = Critter::orderBy('id')->get();
+
         } else {
-            $exists = Critter::where('id', $id)->exists();
-            if (!$exists) {
-                return redirect()->route('critters.all');
+
+            if (is_numeric($nameId)){
+                $exists = Critter::where('id', $nameId)->exists();
+                $searchby = 'id';
+
+            } else {
+                $exists = Critter::where('name', $nameId)->exists();
+                $searchby = 'name';
             }
-            $critters = Critter::where('id', $id)->get();
+
+            if (!$exists) {
+                $found = "Critter with $searchby '$nameId' not found";
+                $critters = Critter::skip(0)->take(30)->get();
+
+                return view('critters.crittopedia', compact('critters', 'found'));
+            
+            }
+
+            $critters = Critter::where($searchby, $nameId)->get();
         }
 
 
-        return view('critters.crittopedia', compact('critters'));
+        return view('critters.crittopedia', compact('critters', 'found'));
     }
 
     /**
