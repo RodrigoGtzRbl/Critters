@@ -101,7 +101,7 @@
                 @csrf
                 @method('DELETE')
             
-                <button type="submit" class="btn btn-danger">Eliminar Critter</button>
+                <button type="submit" class="btn btn-danger">Delete Critter</button>
             </form>
         </div>
 
