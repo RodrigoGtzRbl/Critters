@@ -188,9 +188,9 @@ class CrittersController extends Controller
      */
     public function edit($id)
     {
-        $critters = Critter::where('id', $id)->get();
+        $critter = Critter::where('id', $id)->first();
 
-        return view('critters.edit', compact('critters'));
+        return view('critters.edit', compact('critter'));
     }
 
     /**
