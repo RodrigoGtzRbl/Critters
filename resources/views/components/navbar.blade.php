@@ -26,6 +26,8 @@
                         @endif
                     @endauth
                 @endif
+
+                <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('howToUse') }}">How to use</a>
             </div>
         </div>
     </div>
