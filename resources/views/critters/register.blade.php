@@ -15,11 +15,15 @@
             </div>
         @endif
 
+        <div class="row my-2 text-danger">
+            <h6 class="fs-6">* means required</h6>
+        </div>
+
         <form action="{{ route('critters.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="name">Name:</label>
+                    <label for="name">Name:</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="name" name="name" value="{{ old('name') }}"
@@ -28,7 +32,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="description">Description:</label>
+                    <label for="description">Description:</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
                     <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
@@ -36,7 +40,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="type_1">Type 1:</label>
+                    <label for="type_1">Type 1:</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="type_1" name="type_1" value="{{ old('type_1') }}"
@@ -63,7 +67,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="habitat">Habitat:</label>
+                    <label for="habitat">Habitat:</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="habitat" name="habitat"
@@ -72,7 +76,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="encounter_difficulty">Difficulty of encounter:</label>
+                    <label for="encounter_difficulty">Difficulty of encounter:</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
                     <select class="form-select" id="encounter_difficulty" name="encounter_difficulty" required>
@@ -89,18 +93,18 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="image">Picture (PNG, max 5MB, 1024x1024px):</label>
+                    <label for="image">Picture (PNG, max 5MB, 1024x1024px):</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="file" id="image" name="image" accept=".png" required >
+                    <input class="form-control" type="file" id="image" name="image" accept=".png" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-4 text-end">
-                    <label for="sound">Sound (MP3, max 2MB):</label>
+                    <label for="sound">Sound (MP3, max 2MB):</label><span class="text-danger">*</span>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="file" id="sound" name="sound" accept=".mp3" required >
+                    <input class="form-control" type="file" id="sound" name="sound" accept=".mp3" required>
                 </div>
             </div>
             <div class="row mb-3">
