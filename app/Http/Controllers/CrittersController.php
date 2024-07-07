@@ -170,7 +170,8 @@ class CrittersController extends Controller
      */
     public function myRegisters($start = 0)
     {
-        $critters = Critter::skip($start)->take(30)->get();
+        
+        $critters = Critter::skip($start)->take(30)->where('user_id', auth()->id())->get();
         $totalNumber = Critter::count();
 
         $helper = new functions();

@@ -11,7 +11,7 @@ Route::get('/dashboard', function () {
     return redirect()->route('profile.edit');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['auth']], function () {
-    Route::get('/register', [CrittersController::class, 'create'])->name('register');
+    Route::get('/register', [CrittersController::class, 'create'])->middleware('verified')->name('register');
     Route::post('/', [CrittersController::class, 'store'])->name('store');
     Route::get('/', [CrittersController::class, 'index'])->name('index');
     Route::get('/myRegisters', [CrittersController::class, 'myRegisters'])->name('myRegisters');
