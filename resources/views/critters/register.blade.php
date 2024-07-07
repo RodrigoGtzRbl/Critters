@@ -16,7 +16,7 @@
         @endif
 
         <div class="row my-2 text-danger">
-            <h6 class="fs-6">* means required</h6>
+            <h6 class="fs-6">* Required</h6>
         </div>
 
         <form action="{{ route('critters.store') }}" method="POST" enctype="multipart/form-data">

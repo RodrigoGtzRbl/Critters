@@ -8,16 +8,27 @@
 
         <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto kalam-light">
-                <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.all') }}">Use the crittopedia</a>
+                <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.all') }}">Use the
+                    crittopedia</a>
 
                 @if (Route::has('login'))
                     @auth
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ url('/profile') }}">Profile</a>
 
-                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.register') }}">Register a critter</a>
-                        
-                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.myRegisters') }}">My registrations</a>
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.register') }}">Register a
+                            critter</a>
+
+                        <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.myRegisters') }}">My
+                            registrations</a>
                     @else
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('login') }}">Log in</a>
 
@@ -25,6 +36,7 @@
                             <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+
                 @endif
 
                 <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('howToUse') }}">How to use</a>
