@@ -28,9 +28,11 @@
 
                         <div class="card-footer text-center">
                             <button class="btn btn-primary soundBtn"><strong>Sound</strong></button>
-                            @if ($investigatorID == $critter->user_id)
-                                <a href="{{ route('critters.edit', ['id' => $critter->id]) }}"
-                                    class="btn btn-success">Edit Critter</a>
+                            @if (Route::has('login'))
+                                @if (auth()->id() == $critter->user_id)
+                                    <a href="{{ route('critters.edit', ['id' => $critter->id]) }}"
+                                        class="btn btn-success">Edit Critter</a>
+                                @endif
                             @endif
                         </div>
 

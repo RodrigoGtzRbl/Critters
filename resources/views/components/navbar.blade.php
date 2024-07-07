@@ -15,15 +15,6 @@
                     @auth
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ url('/profile') }}">Profile</a>
 
-                        <a class="nav-link fs-5 mx-3" aria-current="page" href="#"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-
                         <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('critters.register') }}">Register a
                             critter</a>
 
@@ -37,9 +28,23 @@
                         @endif
                     @endauth
 
+
+
                 @endif
 
                 <a class="nav-link fs-5 mx-3" aria-current="page" href="{{ route('howToUse') }}">How to use</a>
+
+                @if (Route::has('login'))
+                    <a class="nav-link fs-5 mx-3" aria-current="page" href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endif
+
             </div>
         </div>
     </div>

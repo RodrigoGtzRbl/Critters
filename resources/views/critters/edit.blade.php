@@ -18,11 +18,11 @@
         <form action="{{ route('critters.update', $critter->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="row g-5">
+            <div class="row g-1">
 
                 <input type="hidden" name="id" value="{{ $critter->id }}">
 
-                <div class="col-12 col-md-6 mx-auto">
+                <div class="col-12 col-md-4">
                     <div class="card mx-auto" style="width: 18rem;">
                         <img src="/media/images/{{ $critter->image }}" class="card-img-top p-2"
                             alt="{{ $critter->image == null ? 'No image' : $critter->name . ' photo' }}">
@@ -32,21 +32,30 @@
                                 <strong>Name:</strong>
                                 <input type="text" name="name" class="form-control" value="{{ $critter->name }}">
                             </h5>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <div class="card-body">
                             <p class="card-text">
                                 <strong>Description:</strong>
-                                <textarea name="description" class="form-control">{{ $critter->description }}</textarea>
+                                <textarea id="description" name="description" class="form-control">{{ $critter->description }}</textarea>
 
                                 @foreach ($errors->get('description') as $error)
                                     <span class="text-danger">{{ $error }}</span><br>
                                 @endforeach
                             </p>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="card" style="width: 18rem;">
+                <div class="col-12 col-md-4">
+                    <div class="card mx-auto" style="width: 18rem;">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -97,10 +106,11 @@
             </div>
         </form>
         <div class="row text-center mt-5">
-            <form action="{{ route('critters.destroy', ['id' => $critter->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este critter?');">
+            <form action="{{ route('critters.destroy', ['id' => $critter->id]) }}" method="POST"
+                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este critter?');">
                 @csrf
                 @method('DELETE')
-            
+
                 <button type="submit" class="btn btn-danger">Delete Critter</button>
             </form>
         </div>
