@@ -36,25 +36,24 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // Use unique names for your routes
-    Route::get('custom-verify-email', [EmailVerificationPromptController::class, '__invoke'])
-        ->name('custom-verification.notice');
+    Route::get('verify-email', EmailVerificationPromptController::class)
+                ->name('verification.notice');
 
-    Route::get('custom-verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('custom-verification.verify');
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+                ->middleware(['signed', 'throttle:6,1'])
+                ->name('verification.verify');
 
-    Route::post('custom-email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-        ->middleware('throttle:6,1')
-        ->name('custom-verification.send');
+    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+                ->middleware('throttle:6,1')
+                ->name('verification.send');
 
-    Route::get('custom-confirm-password', [ConfirmablePasswordController::class, 'show'])
-        ->name('custom-password.confirm');
+    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
+                ->name('password.confirm');
 
-    Route::post('custom-confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('custom-password', [PasswordController::class, 'update'])->name('custom-password.update');
+    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('custom-logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('custom-logout');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout');
 });
