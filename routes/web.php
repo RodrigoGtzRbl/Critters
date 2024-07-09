@@ -35,7 +35,7 @@ Route::get('/show/all/{start?}', [CrittersController::class, 'showAll'])->name('
 
 Route::get('/search', [CrittersController::class, 'search'])->name('critters.search');
 
-Route::get('/howtouse', [GenericController::class, 'howto'])->name('howToUse');
+Route::get('/how/to/use', [GenericController::class, 'howto'])->name('howToUse');
 
 
 Route::fallback(function () {
