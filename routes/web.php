@@ -17,7 +17,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['auth']], function () {
     Route::get('/register', [CrittersController::class, 'create'])->middleware('verified')->name('register');
     Route::post('/', [CrittersController::class, 'store'])->name('store');
@@ -28,8 +27,7 @@ Route::group(['prefix' => 'critters', 'as' => 'critters.', 'middleware' => ['aut
     Route::delete('/{id}', [CrittersController::class, 'destroy'])->name('destroy');
 });
 
-
-Route::get('/{id}', [CrittersController::class, 'showById'])->name('critters.showById');
+Route::get('/search/{id}', [CrittersController::class, 'showById'])->name('critters.showById');
 
 Route::get('/show/all/{start?}', [CrittersController::class, 'showAll'])->name('critters.all');
 
